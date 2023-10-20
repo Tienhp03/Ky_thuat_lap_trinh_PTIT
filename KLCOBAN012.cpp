@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+#define ll long long
+//12345
+
+using namespace std;
+
+
+bool check(ll n){
+	string s =to_string(n);
+	int l=s.size();
+	int i=0;
+	int j=l-1;
+	while(i<j){
+		if(s[i]!=s[j]) return false;
+		i++;
+		j--;
+	}
+	return true;
+}
+
+
+ll solve(ll n){
+	ll i,j;
+	ll temp=n;
+	
+	for(i=n,j=temp;;i++,j--){
+		if(check(i)==true && check(j)==false){
+			cout<<i<<endl;
+			break;
+		}else if(check(i)==false && check(j)==true){
+			cout<<j<<endl;
+			break;
+		}else if(check(i)==true && check(j)==true){
+			if(i!=j){
+				cout<<j<<" "<<i<<endl;
+				break;
+			}else{
+				cout<<i<<endl;
+				break;
+			}
+		} 
+	}
+}
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		ll n; cin>>n;
+		solve(n);
+		
+	}
+	return 0;
+}
