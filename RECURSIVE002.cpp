@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+
+using namespace std; 
+
+long long solve(int s){
+	if(s==0) return 1;
+	return s*solve(s-1);
+}
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		int s; cin>>s;
+		cout<<solve(s)<<endl;
+	}
+	return 0;
+}
