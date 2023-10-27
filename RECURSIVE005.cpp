@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+double Try(double x, int n){
+	if(n==0){
+		return 1.0;
+	}else if(n>0){
+		return x*Try(x,n-1);
+	}else{
+		return 1.0/(x*Try(x,-n-1));
+	} 
+	
+}
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		double x;
+		int n;
+		 cin>>x>>n;
+		cout<<Try(x,n)<<endl;
+	}
+	return 0;
+}
