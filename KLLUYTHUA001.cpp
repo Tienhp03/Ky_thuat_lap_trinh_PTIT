@@ -1,0 +1,60 @@
+#include<bits/stdc++.h>
+#define ll long long
+
+using namespace std;
+
+
+int nhan(int res[], int size, int a){ // tra ve size
+	int nho=0;
+	
+	for(int i=0;i<size;i++){// nhan tung chu so cua res vs a
+		int  x=res[i]*a+nho;
+		res[i]=x%10;
+		nho=x/10;
+	}
+	
+	while(nho>0){
+		res[size]=nho%10;
+		nho/=10;
+		size++;
+	}
+	return size;
+}
+
+
+void solve(int a, int n){
+	if(n==0){
+		cout<<1;
+		return;
+	}
+	
+	int res[100000];
+	int size=0;
+	int temp=a;
+	
+	while(temp>0){
+		res[size]=temp%10;
+		temp/=10;
+		size++;
+	}
+
+	for(int i=2;i<=n;i++) size=nhan(res,size,a);
+	
+	for(int i=size-1; i>=0;i--) cout<<res[i];
+}
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		int a,n;
+		cin>>a>>n;
+		if(a==0){
+			cout<<0<<endl;
+		}else{
+			solve(a,n);
+			cout<<endl;
+		}
+		
+	}
+	return 0;
+}
