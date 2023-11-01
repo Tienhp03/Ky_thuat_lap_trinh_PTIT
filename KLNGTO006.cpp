@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int uocso(int n){
+	int res;
+	while(n%2==0){
+		res=2;
+		n/=2;
+	}
+	
+	for(int i=3;i<=sqrt(n);i+=2){
+		while(n%i==0){
+			res=i;
+			n/=i;
+		}
+	}
+	if(n>1) res=n;
+	return res;
+}
+
+int solve(int n){
+	int res=0;
+	
+	for(int i=2;i<=n;i++){
+		if(uocso(i)>sqrt(i) && i>res) res=i;
+	}
+	return res;
+	
+}
+
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		int n; cin>>n;
+		cout<<solve(n)<<endl;
+	}
+	return 0;
+}
