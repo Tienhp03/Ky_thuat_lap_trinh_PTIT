@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+	int t; cin>>t;
+	cin.ignore();
+	while(t--){
+		string s;
+		getline(cin,s);
+		int l=s.size();
+		for(int i=l-1;i>0;i--){
+			cout<<s[i];
+		}
+		cout<<s[0]<<endl;
+		
+	}
+	return 0;
+}
