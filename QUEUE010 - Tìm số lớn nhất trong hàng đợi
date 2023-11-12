@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int solve(vector<int>&x){
+	int res=0;
+	for(int i=0;i<x.size();i++){
+		if(x[i]>res) res=x[i];
+	}
+	return res;  
+}
+
+int main(){
+	int t; cin>>t;
+	cin.ignore();
+	while(t--){
+		string s; getline(cin,s);
+		vector<int>x;
+		string tmp="";
+		
+		for(char c:s){
+			if(c==','){
+				x.push_back(stoi(tmp));
+				tmp="";
+			}else tmp+=c;
+		}
+			x.push_back(stoi(tmp));
+			
+		cout<<solve(x)<<endl;	
+	}
+	return 0;
+}
