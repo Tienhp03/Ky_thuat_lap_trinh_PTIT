@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int solve(vector<int>&x1, vector<int>&x2 ){
+	stack<int>stk;//chua banh
+	queue<int>que;// chua hoc sinh
+	
+	for(int i=0;i<x1.size();i++){
+		que.push(x1[i]);
+		stk.push(x2[x2.size()-1-i]);
+	}
+	
+	
+	int n=0;
+	while(!stk.empty()){
+		if(stk.top()==que.front()){
+			stk.pop();
+			que.pop();
+			n=0;
+		}else{
+			que.push(que.front());
+			que.pop();
+			n++;
+		}
+		if(n==que.size()) break;
+	}
+	return que.size();
+}
+
+int main(){
+	int t; cin>>t;
+	cin.ignore();
+	while(t--){
+		string s1,s2; cin>>s1>>s2;// hs banh
+		vector<int>x1,x2;//x1 hoc sinh, x2 banh
+		string tmp1="";
+		string tmp2="";
+		
+		for(char c:s1){
+			if(c==','){
+				x1.push_back(stoi(tmp1));
+				tmp1="";
+			}else tmp1+=c;
+		}
+		x1.push_back(stoi(tmp1));
+		
+		
+		for(char c:s2){
+			if(c==','){
+				x2.push_back(stoi(tmp2));
+				tmp2="";
+			}else tmp2+=c;
+		}
+		x2.push_back(stoi(tmp2));
+		
+		
+		cout<<solve(x1,x2)<<endl;
+	}
+	return 0;
+}
