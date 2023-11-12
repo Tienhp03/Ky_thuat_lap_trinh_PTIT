@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int solve(	vector<int>&x, int k){
+	queue<int>que;
+	int res=0;
+	for(int i=0;i<x.size();i++) que.push(i);
+
+	while(true){
+		if(x[k]==0) break;
+		int tmp=que.front();
+		x[tmp]--;
+		res++;
+		que.pop();
+		if(x[tmp]!=0) que.push(tmp);
+	}
+	return res;
+}
+
+
+int main(){
+	int t; cin>>t;
+	cin.ignore();
+	while(t--){
+		string s; int k;
+		cin>>s>>k;
+		vector<int>x;
+		string tmp="";
+		
+		for(char c:s){
+			if(c==','){
+				x.push_back(stoi(tmp));
+				tmp="";
+			}else tmp+=c;
+		}
+		x.push_back(stoi(tmp));
+		
+		cout<<solve(x,k)<<endl;
+	}
+	return 0;
+}
