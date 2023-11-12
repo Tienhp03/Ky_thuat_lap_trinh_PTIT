@@ -1,0 +1,51 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int solve(vector<string>&p){
+	stack<int> stk;
+	
+	for(int i=0;i<p.size();i++){
+		if(stk.empty()) stk.push(stoi(p[i]));
+		else if(p[i]=="C") stk.pop();
+		else if(p[i]=="D") stk.push(2*stk.top());
+		else if(p[i]=="+"){
+			int x=stk.top();
+			stk.pop();
+			int y=stk.top();
+			stk.push(x);
+			stk.push(x+y);
+		}
+		else stk.push(stoi(p[i]));
+	}
+	
+	
+	int sum=0;
+	while(!stk.empty()){
+		sum+=stk.top();
+		stk.pop();
+	}
+	return sum;
+}
+
+
+int main(){
+	int t; cin>>t;
+	cin.ignore();
+	while(t--){
+		string s; getline(cin,s);
+		vector<string>p;
+		string tmp="";
+		
+		for(char c:s){
+			if(c==','){
+				p.push_back(tmp);
+				tmp="";
+			}else tmp+=c;
+		}
+		p.push_back(tmp);
+		
+		cout<<solve(p)<<endl;
+	}
+	return 0;
+}
