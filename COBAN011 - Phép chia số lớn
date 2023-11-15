@@ -1,0 +1,81 @@
+#include<bits/stdc++.h>
+using namespace std;
+int stringcmp(string a,string b){
+	while(a.size()<b.size()) a="0"+a;
+	while(b.size()<a.size())b="0"+b;
+	if(a<b){
+		return -1;
+	}
+	else if(a==b){
+		return 0;
+	}
+	else{
+	return 1;}
+}
+string add(string a,string b){
+	while(a.size()<b.size())a="0"+a;
+	while(a.size()>b.size())b="0"+b;
+	int l=a.size();
+	string ans="";
+	int nho=0;
+	for(int i=l-1;i>=0;i--){
+		int so=a[i]-'0'+b[i]-'0'+nho;
+		nho=so/10;
+		ans=(char)(so%10+'0')+ans;
+	}
+	if(nho>0) ans="1"+ans;
+	return ans;
+}
+string sub(string a,string b){
+	while(a.size()<b.size())a="0"+a;
+	while(a.size()>b.size())b="0"+b;
+	int l=a.size();
+	string ans="";
+	int nho=0;
+	for(int i=l-1;i>=0;i--){
+		int so=a[i]-'0'-(b[i]-'0')-nho;
+		if(so<0){
+			so+=10;
+			nho=1;
+		}
+		else{
+			nho=0;
+		}
+		ans=(char)(so+'0')+ans;
+	}
+	while(ans[0]=='0'&&ans.size()>1){
+		ans.erase(0,1);
+	}
+	return ans;
+}
+string bigdiv(string a,string b){
+	string kb[11];
+	kb[0]="0";
+	for(int i=1;i<=10;i++){
+		kb[i]=add(kb[i-1],b);
+	}
+	string res="",hold="";
+	int k;
+	for(int i=0;i<a.size();i++){
+		hold+=a[i];
+		k=1;
+		while(stringcmp(hold,kb[k])!=-1){
+			k++;
+		}
+		res+=char(k-1+'0');
+		hold=sub(hold,kb[k-1]);
+	}
+	while(res[0]=='0'&&res.size()>1){
+		res.erase(0,1);
+	}
+	return res+" "+hold;
+}
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+		string a,b;
+		cin>>a>>b;
+		cout<<bigdiv(a,b)<<"\n";
+	}
+}
