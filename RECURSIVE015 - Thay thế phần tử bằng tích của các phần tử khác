@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+int main(){
+	int t; cin>>t;
+	cin.ignore();
+	while(t--){
+		string s; getline(cin,s);
+		vector<int>x;
+		string tmp="";
+		ll tich=1;
+		
+		for(char c:s){
+			if(c==','){
+				x.push_back(stoi(tmp));
+				tich*=stoi(tmp);
+				tmp="";
+			}else tmp+=c;
+		}
+		x.push_back(stoi(tmp));
+		tich*=stoi(tmp);
+		
+		for(int i=0;i<x.size()-1;i++){
+			cout<<tich/x[i]<<",";
+		}
+		cout<<tich/x[x.size()-1]<<endl;
+	}
+	return 0;
+}
