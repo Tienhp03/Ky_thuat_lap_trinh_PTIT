@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll unsigned long long int 
+ll tinh(string s,int n){
+	ll sum=0;
+	for(int i=0;i<n;i++){
+		if(s[i]=='1'){
+			sum |=1<<(n-1-i);
+		}
+	}
+	return sum;
+}
+int main(){
+     int t;
+     cin>>t;
+     while(t--){
+    int n;
+    string a,b;
+    cin>>n>>a>>b;
+    ll x=tinh(a,n);
+    ll y=tinh(b,n);
+    ll d=(x<y)?y-x-1:x-y-1;
+    if(x==y){
+    	cout<<0<<"\n";
+	}
+	else{
+    cout<<d<<"\n";
+	 }
+}
+   return 0;
+}
