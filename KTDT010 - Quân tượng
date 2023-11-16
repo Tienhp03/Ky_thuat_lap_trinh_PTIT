@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+#define ll unsigned long long
+using namespace std;
+// 2*(n-1)
+int main(){
+	int t; cin>>t;
+	while(t--){
+		ll n; cin>>n;
+		ll res = 2*(n-1);
+		cout<<res<<endl;
+	}
+	
+	return 0;
+}
