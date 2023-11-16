@@ -1,0 +1,35 @@
+#include <iostream>
+#include <stack>
+#include <string>
+using namespace std;
+void solve(string str) {
+    int dem = 0;
+     stack<char> stack;
+    for (int i = 0; i < str.length(); i++) {
+        if (str[i] == '(') {
+            stack.push('(');
+        } else {
+            if (stack.empty()) {
+                dem++;
+                stack.push('(');
+            } else {
+                stack.pop();
+            }
+        }
+    }
+    dem += stack.size() / 2;
+     cout << dem <<  endl;
+}
+
+int main() {
+     string str;
+    int test;
+     cin >> test;
+     cin.ignore();
+    while (test--) {
+         getline( cin, str);
+        solve(str);
+    }
+
+    return 0;
+}
