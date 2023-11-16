@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+#define MAX 1000001
+
+int a[MAX];
+vector < int > v;
+
+void snt() {
+  memset(a, 1, sizeof(a));
+  a[0] = a[1] = 0;
+  for (int i = 2; i * i <= MAX; i++) {
+    if (a[i]) {
+      v.push_back(i);
+      for (int j = i * i; j <= MAX; j += i) {
+        a[j] = 0;
+      }
+    }
+  }
+}
+
+int CountSubsetSum(vector < int > & arr, int val, int n, int k) {
+  vector < vector < int >> dp(k + 1, vector < int > (val + 1, 0));
+  dp[0][0] = 1;
+
+  for (int i = 0; i < n; i++) {
+    for (int j = k; j >= 1; j--) {
+      for (int v = val; v >= arr[i]; v--) {
+        dp[j][v] += dp[j - 1][v - arr[i]];
+      }
+    }
+  }
+
+  return dp[k][val];
+}
+
+int main()
+
+{
+  snt();
+  int t;
+  cin >> t;
+  while (t--) {
+    int n, k;
+    cin >> n >> k;
+    cout << CountSubsetSum(v, n, v.size(), k) << "\n";
+  }
+  //system("pause");
+}
