@@ -1,0 +1,36 @@
+// cong thuc (n) :  2n=tich (p^(a+1))-1) / (p-1)
+// p: so nguyen to, a: so mu
+
+#include<bits/stdc++.h>
+#define ll long long
+
+using namespace std;
+
+void solve(ll n){
+	ll tich=1;
+	ll temp=n;
+	
+	for(int i=2;i<=sqrt(n);i++){
+		if(n%i==0){
+			int cnt=0;
+			while(n%i==0){
+				cnt++;
+				n/=i;
+			}
+			tich*=((pow(i,cnt+1)-1)/(i-1));
+		}
+	}
+	if(n!=1) tich*=(n+1); // (n^2-1)/(n-1)
+	
+	if(tich==2*temp) cout<<1<<endl;
+	else cout<<0<<endl;
+}
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		ll n; cin>>n;
+		solve(n);
+	}
+	return 0;
+}
