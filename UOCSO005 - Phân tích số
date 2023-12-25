@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+#define ll long long
+
+using namespace std;
+
+void solve(ll n){
+	ll dem=0;
+	map<ll,int>cnt;
+	
+	if(n%2==0){
+		dem++;
+		while(n%2==0){
+			cnt[2]++;
+			n/=2;
+		}
+	}
+	for(int i=3;i<=sqrt(n);i+=2){
+		if(n%i==0){
+			dem++;
+			while(n%i==0){
+				cnt[i]++;
+				n/=i;
+			}
+		}
+	}
+	if(n!=1){
+		dem++;
+		cnt[n]++;
+	}
+	
+	cout<<dem<<endl;
+	for(auto it:cnt){
+		cout<<it.first<<" "<<it.second<<endl;
+	}
+}
+
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		ll n; cin>>n;
+		solve(n);
+	}
+	return 0;
+}
