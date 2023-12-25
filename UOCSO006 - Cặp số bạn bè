@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+ll tong(ll x){
+	ll sum=1;
+	for(int i=2;i*i<=x;i++){
+		if(x%i==0){
+			sum+=i;
+			if((x/i)!=i) sum+=x/i;
+		}
+	}
+	return sum;
+}
+
+void solve(ll a, ll b){
+	if(tong(a)==b && tong(b)==a) cout<<"YES"<<endl;
+	else cout<<"NO"<<endl;
+}
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		ll a,b; cin>>a>>b;
+		solve(a,b);
+	}
+	return 0;
+}
