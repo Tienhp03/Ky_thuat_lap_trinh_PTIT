@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+int check[1000001];
+
+int dem(int a){
+//	check[0]=0; check[1]=0;
+	int cnt=0;
+	for(int i=2;i<=a;i++) check[i]=1; // gan tat ca cac so la snt
+	
+	for(int i=2;i<=sqrt(a);i++){
+		if(check[i]==1){
+			for(int j=i*i;j<=a;j+=i) check[j]=0;// gan 0 cho cac so ko la snt
+		}
+	}
+	
+	for(int i=2;i<=a;i++){
+		if(check[i]==1) cnt++;
+	}
+	return cnt;
+}
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		int l,r; cin>>l>>r;
+		int res=dem(r)-dem(l);
+		if(check[l]==1) res+=1;
+		cout<<res<<endl;
+	}
+	return 0;
+}
