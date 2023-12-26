@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+ll solve(int n){
+	int a[n+1];
+	memset(a,0,sizeof(a)); // cac so deu la snt
+	
+	for(int i=2;i<=n/2;i++){
+		if(a[i]==0){
+			for(int j=i*2;j<=n;j+=i) a[j]=i; // uoc snt lon nhat cua j la i
+		}
+	}
+	
+	ll sum=0;
+	for(int i=2;i<=n;i++){
+		if(a[i]!=0) sum+=a[i]; // i ko la snt
+		else sum+=i; // i la snt
+	}
+	return sum;
+}
+
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		int n; cin>>n;
+		cout<<solve(n)<<endl;
+	}
+	return 0;
+}
