@@ -1,0 +1,32 @@
+// snt = 2 + so le
+
+#include<bits/stdc++.h>
+#define ll long long
+
+using namespace std;
+
+bool snt(ll a){
+	for(int i=3;i<=sqrt(a);i+=2){
+		if(a%i==0) return false;
+	}
+	return true;
+}
+
+ll solve(ll n){
+	if(n<=4) return 5;
+	if(n%2==0) n+=1;
+	
+	for(ll i=n;;i+=2){
+		if(snt(i) && snt(i-2)) return i;
+	}
+}
+
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		ll n; cin>>n;
+		cout<<solve(n)<<endl;
+	}
+	return 0;
+}
