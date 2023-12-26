@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int solve(string &s){
+	int n=s.size();
+	vector<string>res;
+	
+	for(int i=0;i<n-3;i++){
+		for(int j=i+1;j<n-2;j++){
+			for(int k=j+1;k<n-1;k++){
+				
+				string A=s.substr(0,i+1);
+				string B=s.substr(i+1,j-i);
+				string C=s.substr(j+1,k-j);
+				string D=s.substr(k+1,n-k);
+				
+				int p=A.size();
+				int q=B.size();
+				int r=C.size();
+				int t=D.size();
+				
+				if((A[0]=='0'&&p>1) || (B[0]=='0'&&q>1) || (C[0]=='0'&&r>1) || (D[0]=='0'&&t>1)) continue;
+				if((A[0]!='0'&&p>3) || (B[0]!='0'&&q>3) || (C[0]!='0'&&r>3) || (D[0]!='0'&&t>3)) continue;
+				if(p<=0 || q<=0 || r<=0 || t<=0) continue;
+				if(stoi(A)>255 || stoi(B)>255 || stoi(C)>255 || stoi(D)>255) continue;
+				
+				string ip=A+'.'+B+'.'+C+'.'+D;
+				res.push_back(ip);
+			}
+		}
+	}
+	return res.size();
+}
+
+
+
+int main(){
+	int t; cin>>t;
+	cin.ignore();
+	while(t--){
+		string s; getline(cin,s);
+		cout<<solve(s)<<endl;
+	}
+	return 0;
+}
