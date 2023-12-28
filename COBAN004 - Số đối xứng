@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int solve(int k){
+	if(k==1) return 9;
+	int res;
+	if(k%2==0) res=9*pow(10,k/2-1);
+	else res=9*pow(10,k/2);
+	return res; 
+}
+
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		int k; cin>>k;
+		cout<<solve(k)<<endl;
+	}
+	return 0;
+}
