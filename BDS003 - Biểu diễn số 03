@@ -1,0 +1,33 @@
+//C(n-1,k-1)
+
+
+#include<bits/stdc++.h>
+#define ll long long
+
+using namespace std;
+
+ll tinh(int n, int k){
+	ll res=1;
+	for(int i=0;i<k;i++){
+		res*=(n-i);
+		res/=(i+1);
+	}
+	return res;
+}
+
+
+ll solve(int n, int k){
+	ll res=tinh(n-1,k-1);
+	return res;
+}
+
+
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		int n,k; cin>>n>>k;
+		cout<<solve(n,k)<<endl;
+	}
+	return 0;
+}
