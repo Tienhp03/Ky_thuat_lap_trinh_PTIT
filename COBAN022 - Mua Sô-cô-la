@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int solve(int x, int y, int m){
+	int res=m/x;
+	int vo1=m/x;
+	int vo2=0;
+	
+	while(vo1>0){
+		vo2=vo1+(vo2%y);
+		vo1=vo2/y;
+		res+=vo1;
+	}
+	return res;
+}
+
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		int x,y,m; cin>>x>>y>>m;
+		cout<<solve(x,y,m)<<endl;
+	}
+	return 0;
+}
