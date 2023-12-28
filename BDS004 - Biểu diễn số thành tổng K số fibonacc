@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+
+int a[43]={0};
+void fibo(){
+	a[0]=1; a[1]=2;
+	for(int i=2;i<43;i++) a[i]=a[i-2]+a[i-1];
+}
+
+
+int Try(int n, int k ,int index){
+	if(k==0){
+		if(n==0) return 1;
+		else return 0;
+	}
+	
+	int sum=0;
+	for(int i=index;i>=0 && a[i]*k>=n;i--){
+		if(a[i]>n) continue;
+		else sum+=Try(n-a[i],k-1,i);
+	}
+	
+	return sum;
+}
+
+int main(){
+	fibo();
+	int t; cin>>t;
+	while(t--){
+		int n,k; cin>>n>>k;
+		cout<<Try(n,k,42)<<endl;
+	}
+	return 0;
+}
