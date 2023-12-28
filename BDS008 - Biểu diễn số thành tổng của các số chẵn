@@ -1,0 +1,31 @@
+// ways(n) = 2^(n/2-1)
+
+
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+const int mod=1e9+7;
+
+ll solve(int n){
+	if(n%2==1) return -1;
+	ll res=1;
+	ll x=n/2-1;
+	ll m=2;
+	
+	while(x>0){
+		if(x%2==1) res=(res*m)%mod;
+		m=(m*m)%mod;
+		x/=2;
+	}
+	return res;
+}
+
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		int n; cin>>n;
+		cout<<solve(n)<<endl;
+	}
+	return 0;
+}
