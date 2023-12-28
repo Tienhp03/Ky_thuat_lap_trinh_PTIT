@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+int n,k,x,y;
+int visited[16][16];
+
+bool check(int x, int y){
+	if(0<=x && x<=n && 0<=y && y<=n) return true;
+	return false;
+}
+
+int dx[8]={-1,-2,-2,-1,2,2,1,1};
+int dy[8]={-2,-1,1,2,-1,1,2,-2};
+
+void Try(int x, int y, int step){
+	if(step>k) return;
+	visited[x][y]=1;
+	for(int i=0;i<8;i++){
+		if(check(x+dx[i], y+dy[i])) Try(x+dx[i], y+dy[i], step+1);
+	}
+}
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		cin>>n>>k>>x>>y;
+		for(int i=1;i<=n;i++){
+			for(int j=1;j<=n;j++) visited[i][j]=0;
+		}
+		
+		Try(x,y,0);
+		int res=0;
+		for(int i=1;i<=n;i++){
+			for(int j=1;j<=n;j++){
+				if(visited[i][j]==1) res++;
+			}
+		}
+		cout<<res<<endl;
+	}
+	return 0;
+}
