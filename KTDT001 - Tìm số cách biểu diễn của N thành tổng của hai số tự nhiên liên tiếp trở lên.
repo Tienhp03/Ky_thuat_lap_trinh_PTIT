@@ -1,0 +1,29 @@
+/* N=a+(a+1)+(a+2)+...+(a+L)
+N= a*(L+1)+(L+1)*L/2
+=> a=[N-(L+1)*L/2]/(L+1)
+*/
+
+#include<bits/stdc++.h>
+#define ll long long 
+using namespace std;
+
+int solve(ll N){
+	int count=0;
+	for(ll L=1;L*(L+1)<=2*N;L++){
+	
+	ll a=(N-(L+1)*L/2)/(L+1);
+	ll b=(N-(L+1)*L/2)%(L+1);
+	if(a>0 && b==0) count++;
+}
+	return count;
+}
+
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		ll n; cin>>n;
+		cout<<solve(n)<<endl;
+	}
+	return 0;
+}
