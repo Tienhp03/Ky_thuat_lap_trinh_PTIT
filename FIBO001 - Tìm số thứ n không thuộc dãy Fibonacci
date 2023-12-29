@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int solve(int n){
+	int a2=1,a1=2;
+	int a=a1+a2;
+	
+	while(n>0){
+		a2=a1;
+		a1=a;
+		a=a1+a2;
+		n=n-(a-a1-1);
+	}
+	n=n+(a-a1-1);
+	return a1+n;
+}
+
+ int main(){
+ 	int t; cin>>t;
+ 	while(t--){
+ 		int n; cin>>n;
+ 		cout<<solve(n)<<endl;
+	 }
+	return 0;
+ }
