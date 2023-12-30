@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+bool dem(ll a, ll n){
+//	ll temp=a;
+	ll x=5;
+	ll dem=0;
+	while(x<=a){
+		dem+=a/x;
+		x=x*5;
+	}
+	return (dem>=n);
+}
+
+
+ll solve(ll n){
+	if(n==1) return 5;
+	ll l=0;
+	ll r=5*n;
+	while(l<r){
+		ll mid=(l+r)/2;
+		if(dem(mid,n)) r=mid;
+		else l=mid+1;
+	}
+	return l;
+}
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		ll n; cin>>n;
+		cout<<solve(n)<<endl;
+	}
+	return 0;
+}
