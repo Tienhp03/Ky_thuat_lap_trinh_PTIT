@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+ll tinhmu(int m, int n){
+	ll res=1;
+	while(n>0){
+		if(n%2==1) res=res*m;
+		m*=m;
+		n/=2;
+	}
+	return res;
+	
+}
+
+int solve(int m, int n, int cur_num, int cur_sum){
+	int res=0;
+	ll a=tinhmu(cur_num,n);
+	
+	while(a+cur_sum<m){
+		res+=solve(m,n,cur_num+1,cur_sum+a);
+		cur_num++;
+		a=tinhmu(cur_num,n);
+	}
+    if(cur_sum+a==m) res++;
+    return res;
+}
+
+
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		int m,n; cin>>m>>n;
+		cout<<solve(m,n,1,0)<<endl;
+	}
+	return 0;
+}
