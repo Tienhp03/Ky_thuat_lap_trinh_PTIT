@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int solve(int k, int s){
+	if(s==3*k) return 1;
+	int res=0;
+	
+	for(int i=0;i<=k;i++){ // x=i
+		int MIN=min(k,s-i);
+		for(int j=0;j<=MIN;j++){  //y=j
+			int z=s-i-j;
+			if(z<=k) res++;
+		}
+	}
+	return res;
+}
+
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		int k,s; cin>>k>>s;
+		cout<<solve(k,s)<<endl;
+	}
+	return 0;
+}
