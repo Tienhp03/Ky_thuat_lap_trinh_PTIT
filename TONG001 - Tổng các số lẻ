@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+#define ll long long
+
+using namespace std;
+
+ll solve(ll l, ll r){
+	ll sum=0;
+	if(l%2==0) l=l+1;
+	if(r%2==0) r=r-1;
+	ll n=(r-l)/2+1;
+	sum=(l+r)*n/2;
+	return sum;
+}
+
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		ll l,r; cin>>l>>r;
+		cout<<solve(l,r)<<endl;
+	}
+	return 0;
+}
