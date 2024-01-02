@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+ll tinh(int x, int n){
+	ll res=1;
+	while(n>0){
+		if(n%2==1) res=res*x;
+		x*=x;
+		n/=2;
+	} 
+	return res;
+}
+
+
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		ll n; cin>>n;
+		string s=to_string(n);
+		int l=s.size();
+		ll sum=0;
+		for(int i=0;i<l;i++){
+			int x=(s[i]-'0');
+			sum+=tinh(x,l);
+		}
+		if(sum==n) cout<<1<<endl;
+		else cout<<0<<endl;
+	}
+	return 0;
+}
