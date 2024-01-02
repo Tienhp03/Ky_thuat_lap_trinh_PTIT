@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		int n; float x;
+		cin>>n>>x;
+		float s=1;
+		float res=0;
+		for(int i=1;i<=n;i++){
+			s*=x/i;
+			res+=s;
+		}
+		cout<<setprecision(3)<<fixed<<res<<endl;
+	}
+	return 0;
+}
