@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		int n; float x;
+		cin>>n>>x;
+		float res=0;
+		for(int k=1;k<=n;k++){
+			float a=pow(x,k);
+			float b=k*(k+1)/2;
+			res+=a/b;
+		}
+		cout<<setprecision(3)<<fixed<<res<<endl;
+	}
+	return 0;
+}
