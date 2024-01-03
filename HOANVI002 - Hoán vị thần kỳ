@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+int main()
+{
+	int t;
+	cin >> t;
+	while(t--)
+	{
+		int n,k;
+		cin >> n >> k;
+		int a[n+1];
+		for(int i=1;i<=n;i++)
+		{
+			a[i]=i;
+		}
+		if(k==0)
+		{
+			for(int i=1;i<=n;i++)
+			{
+				cout << i <<" " ;
+			}
+			cout << endl;
+		}else if(n%2==1&&k!=0||n%(2*k)!=0)
+		{
+			cout <<"-1" << endl;
+		}else 
+		{
+			for(int i=1;i<=n;i+=2*k)
+			{
+				for(int j=i;j<i+k;j++)
+				{
+					swap(a[j],a[j+k]);
+				}
+			}
+			for(int i=1;i<=n;i++)
+			{
+				cout << a[i]<<" ";
+			}
+			cout << endl;
+		}
+	}
+}
