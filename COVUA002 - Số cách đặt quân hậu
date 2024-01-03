@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+//cong thuc duong cheo xuoi i-j+n va nguoc la i+j-1
+using namespace std;
+
+
+int x[100], cot[100], c1[100], c2[100];
+int n;
+int cnt=0;
+
+int solve(int i){
+	
+	for(int j=1;j<=n;j++){
+		if(cot[j]==1&&c1[i-j+n]==1&&c2[i+j-1]==1){
+			x[i]=j;
+			cot[j]= c1[i-j+n]= c2[i+j-1]=0;
+			if(i==n){
+				cnt++;
+			}else{
+				solve(i+1);
+				
+			}
+			cot[j]=c1[i-j+n]=c2[i+j-1]=1;
+		}
+	}
+} 
+
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+		
+		cin>>n;
+		for(int i=0;i<=99;i++){
+			cot[i]=c1[i]=c2[i]=1;
+		}
+		solve(1);
+		cout<<cnt<<endl;
+	}
+	return 0;
+}
